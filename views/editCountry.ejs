@@ -1,0 +1,56 @@
+<%- include('partials/navbar', { page: '' }) %>
+
+<h1>Edit Country: <%= country.commonName %></h1>
+
+<form action="/editCountry" method="POST">
+    <input type="hidden" name="id" value="<%= country.id %>" readonly>
+
+    <label for="commonName">Common Name:</label>
+    <input type="text" id="commonName" name="commonName" value="<%= country.commonName %>" required>
+
+    <label for="officialName">Official Name:</label>
+    <input type="text" id="officialName" name="officialName" value="<%= country.officialName %>" required>
+
+    <label for="nativeName">Native Name:</label>
+    <input type="text" id="nativeName" name="nativeName" value="<%= country.nativeName %>" required>
+
+    <label for="capital">Capital:</label>
+    <input type="text" id="capital" name="capital" value="<%= country.capital %>" required>
+
+    <label for="languages">Languages:</label>
+    <input type="text" id="languages" name="languages" value="<%= country.languages %>" required>
+
+    <label for="population">Population:</label>
+    <input type="number" id="population" name="population" value="<%= country.population %>" required>
+
+    <label for="area">Area:</label>
+    <input type="number" id="area" name="area" value="<%= country.area %>" required>
+
+    <label for="currencies">Currencies:</label>
+    <input type="text" id="currencies" name="currencies" value="<%= country.currencies %>" required>
+
+    <label for="subRegionId">SubRegion:</label>
+    <select id="subRegionId" name="subRegionId" required>
+        <% subRegions.forEach(subRegion => { %>
+            <option value="<%= subRegion.id %>" <%= (country.subRegionId == subRegion.id) ? "selected" : "" %>>
+                <%= subRegion.subRegion %>
+            </option>
+        <% }) %>
+    </select>
+
+    <label for="landlocked">Is Landlocked:</label>
+    <input type="checkbox" id="landlocked" name="landlocked" <%= country.landlocked ? "checked" : "" %>>
+
+    <label for="openStreetMaps">OpenStreetMaps:</label>
+    <input type="text" id="openStreetMaps" name="openStreetMaps" value="<%= country.openStreetMaps %>">
+
+    <label for="flag">Flag:</label>
+    <input type="text" id="flag" name="flag" value="<%= country.flag %>" required>
+
+    <label for="coatOfArms">Coat of Arms:</label>
+    <input type="text" id="coatOfArms" name="coatOfArms" value="<%= country.coatOfArms %>" required>
+
+    <button type="submit">Update Country</button>
+</form>
+
+<a href="/deleteCountry/<%= country.id %>" class="btn btn-error">Delete Country</a>

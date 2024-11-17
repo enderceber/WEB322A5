@@ -1,0 +1,53 @@
+<%- include('partials/navbar', { page: '/addCountry' }) %>
+
+<h1>Add Country</h1>
+
+<form action="/addCountry" method="POST">
+    <label for="commonName">Common Name:</label>
+    <input type="text" id="commonName" name="commonName" required>
+
+    <label for="officialName">Official Name:</label>
+    <input type="text" id="officialName" name="officialName" required>
+
+    <label for="nativeName">Native Name:</label>
+    <input type="text" id="nativeName" name="nativeName" required>
+
+    <label for="id">ISO Numeric-3 Code:</label>
+    <input type="text" id="id" name="id" required>
+
+    <label for="capital">Capital:</label>
+    <input type="text" id="capital" name="capital" required>
+
+    <label for="languages">Languages:</label>
+    <input type="text" id="languages" name="languages" required>
+
+    <label for="population">Population:</label>
+    <input type="number" id="population" name="population" required>
+
+    <label for="area">Area:</label>
+    <input type="number" id="area" name="area" required>
+
+    <label for="currencies">Currencies:</label>
+    <input type="text" id="currencies" name="currencies" required>
+
+    <label for="subRegionId">SubRegion:</label>
+    <select id="subRegionId" name="subRegionId" required>
+        <% subRegions.forEach(subRegion => { %>
+            <option value="<%= subRegion.id %>"><%= subRegion.subRegion %></option>
+        <% }) %>
+    </select>
+
+    <label for="landlocked">Landlocked:</label>
+    <input type="checkbox" id="landlocked" name="landlocked">
+
+    <label for="openStreetMaps">OpenStreetMaps:</label>
+    <input type="text" id="openStreetMaps" name="openStreetMaps">
+
+    <label for="flag">Flag:</label>
+    <input type="text" id="flag" name="flag" required>
+
+    <label for="coatOfArms">Coat of Arms:</label>
+    <input type="text" id="coatOfArms" name="coatOfArms" required>
+
+    <button type="submit">Add Country</button>
+</form>

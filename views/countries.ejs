@@ -1,0 +1,34 @@
+<%- include('partials/navbar', { page: '/countries' }) %>
+
+<h1>Countries</h1>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>Common Name</th>
+            <th>Official Name</th>
+            <th>Capital</th>
+            <th>Population</th>
+            <th>Area</th>
+            <th>Region</th>
+            <th>Sub-Region</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% countries.forEach(country => { %>
+            <tr>
+                <td><%= country.commonName %></td>
+                <td><%= country.officialName %></td>
+                <td><%= country.capital %></td>
+                <td><%= country.population %></td>
+                <td><%= country.area %> km²</td>
+                <td><%= country.SubRegion.region %></td>
+                <td><%= country.SubRegion.subRegion %></td>
+                <td>
+                    <a href="/editCountry/<%= country.id %>" class="btn btn-success">Edit</a>
+                </td>
+            </tr>
+        <% }) %>
+    </tbody>
+</table>
